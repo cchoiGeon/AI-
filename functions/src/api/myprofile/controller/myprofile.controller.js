@@ -1,5 +1,6 @@
 import { response } from "../../../utils/response/response.js";
 import { status } from "../../../utils/response/response.status.js";
+import { checkUidInLocals } from "../../../utils/validators/logincheck.js";
 import { getMainQuestionSchema, saveMainQuestionSchema } from "../../../vaild/myprofile.vaild.js";
 import { GetMainQuestionDTO, SaveMainQuestionDTO } from "../dto/myprofile.dto.js";
 import  { MyProfileService } from '../service/myprofile.service.js'

@@ -38,7 +38,7 @@ export const patchWriteDataSchema = Joi.object({
 })
 
 export const checkAnswerDataSchema = Joi.object({
-    data: Joi.string().required().messages({
+    mainQuestionId: Joi.string().required().messages({
         'any.required': '사용자 답변이 필요합니다.'
     }),
 })

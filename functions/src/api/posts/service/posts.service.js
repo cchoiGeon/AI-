@@ -49,13 +49,15 @@ export class PostsService {
     
     async checkPostPageData(uid, checkPostDataDTO) {
         try {
-            const result =await this.postRepository.checkPostPageData(uid, checkPostDataDTO);
+            console.log("checkPostDataDTO : ",checkPostDataDTO);
+            const result = await this.postRepository.checkPostPageData(uid, checkPostDataDTO);
+            console.log("체크 결과 : ",result);
+            console.log("존재 유무 : ",result.exists);
             if(!result.exists){
                 throw new Error('DATA_NOT_FOUND');
-            }     
+            }
         } catch (err) {
-            console.error(err);
-            return false;
+            throw err;
         }
     }
     

@@ -82,7 +82,7 @@ export async function Combine(req, res) {
         }
 
         // Joi 검증 실행
-        const { error,value } = combineSchema.v(req.body);
+        const { error,value } = combineSchema.validate(req.body);
         // Joi 검증 실패 시
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);

@@ -17,7 +17,7 @@ export async function savePostData(req, res) {
         const { error, value } = saveWriteDataSchema.validate(req.body);
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);
-            return res.status(400).json(response(status.POST_DATA_NOT_FOUND, errorMessages));
+            return res.status(400).json(response(status.BAD_REQUEST, errorMessages));
         }
 
         const saveDataDTO = new SavePostDataDTO(value);
@@ -26,7 +26,7 @@ export async function savePostData(req, res) {
         return res.json(response(status.SUCCESS));
     } catch (err) {
         if (err.message === 'SAVE_DATA_ERR') {
-            return res.status(500).json(response(status.POST_SAVE_ERROR));
+            return res.status(500).json(response(status.BAD_REQUEST));
         }
         console.log(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));
@@ -44,7 +44,7 @@ export async function checkPostData(req, res) {
         return res.json(response(status.SUCCESS));
     } catch (err) {
         if (err.message === 'GET_DATA_ERR') {
-            return res.status(404).json(response(status.POST_NO_DATA));
+            return res.status(404).json(response(status.BAD_REQUEST));
         }
         console.log(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));
@@ -60,7 +60,7 @@ export async function getPostData(req, res) {
         const { error, value } = getWriteDataSchema.validate(req.params);
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);
-            return res.status(400).json(response(status.POST_EMPTY_QUERY_DATA, errorMessages));
+            return res.status(400).json(response(status.BAD_REQUEST, errorMessages));
         }
 
         const getPostDataDTO = new GetPostDataDTO(value);
@@ -69,7 +69,7 @@ export async function getPostData(req, res) {
         return res.json(response(status.SUCCESS, result));
     } catch (err) {
         if (err.message === 'DATA_NOT_FOUND') {
-            return res.status(404).json(response(status.POST_DATA_NOT_FOUND));
+            return res.status(404).json(response(status.BAD_REQUEST));
         }
         console.log(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));
@@ -94,7 +94,7 @@ export async function updatePostData(req, res) {
         return res.json(response(status.SUCCESS));
     } catch (err) {
         if (err.message === 'PATCH_DATA_ERR') {
-            return res.status(404).json(response(status.POST_PATCH_ERROR));
+            return res.status(404).json(response(status.BAD_REQUEST));
         }
         console.log(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));
@@ -110,7 +110,7 @@ export async function checkPostPageData(req, res) {
         const { error, value } = checkAnswerDataSchema.validate(req.params);
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);
-            return res.status(400).json(response(status.POST_EMPTY_REQUEST_DATA, errorMessages));
+            return res.status(400).json(response(status.BAD_REQUEST, errorMessages));
         }
 
         const checkPostDataDTO = new CheckPostDataDTO(value);
@@ -119,7 +119,8 @@ export async function checkPostPageData(req, res) {
         return res.json(response(status.SUCCESS));
     } catch (err) {
         if (err.message === 'DATA_NOT_FOUND') {
-            return res.status(404).json(response(status.POST_DATA_NOT_FOUND));
+            console.log("DATA_NOT_FOUND");
+            return res.status(404).json(response(status.BAD_REQUEST));
         }
         console.error(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));
@@ -137,7 +138,7 @@ export async function checkWrittenPages(req, res) {
         return res.json(response(status.SUCCESS, result));
     } catch (err) {
         if (err.message === 'DATA_NOT_FOUND') {
-            return res.status(404).json(response(status.POST_DATA_NOT_FOUND));
+            return res.status(404).json(response(status.BAD_REQUEST));
         }
         console.log(err);
         return res.status(500).json(response(status.INTERNAL_SERVER_ERROR));

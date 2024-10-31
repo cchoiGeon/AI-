@@ -23,10 +23,8 @@ export class UpdatePostDataDTO {
 }
 
 export class CheckPostDataDTO {
-    constructor({ mainId, subId, data }) {
-        this.mainId = mainId;
-        this.subId = subId;
-        this.data = data;
+    constructor({ mainQuestionId }) {
+        this.mainId = mainQuestionId;
     }
 }
 
