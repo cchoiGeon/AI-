@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const result = await apiResponse.json();
         const caseNum = result.result.data;
-
-        const caseSections = getCaseSections(caseNum);
+        const caseSections = getCaseSections(caseNum.userCase);
 
         // 로딩 메시지 제거
         loadingMessage.style.display = 'none';

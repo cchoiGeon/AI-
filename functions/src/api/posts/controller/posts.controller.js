@@ -1,5 +1,6 @@
 import { response } from "../../../utils/response/response.js";
 import { status } from "../../../utils/response/response.status.js";
+import { checkUidInLocals } from "../../../utils/validators/logincheck.js";
 
 import { checkAnswerDataSchema, getWriteDataSchema, patchWriteDataSchema, saveWriteDataSchema } from "../../../vaild/posts.vaild.js";
 import { CheckPostDataDTO, GetPostDataDTO, UpdatePostDataDTO, SavePostDataDTO } from "../dto/posts.dto.js";
