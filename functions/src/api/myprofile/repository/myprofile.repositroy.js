@@ -28,9 +28,9 @@ export class MyProfileRepository {
         }
     }
     
-    async GetMainQuestion(getMainQuestionDTO) {
+    async GetMainQuestion(caseNum) {
         try {
-            return (await db.collection("대질문").doc(getMainQuestionDTO.caseNum).get()).data() ?? null;
+            return (await db.collection("대질문").doc(caseNum).get()).data() ?? null;
         } catch (err) {
             console.error("myprofile/GetMainQuestion error: ",err);
             throw err;

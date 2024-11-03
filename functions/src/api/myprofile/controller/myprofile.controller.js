@@ -14,7 +14,7 @@ export async function GetUserMainQuestion(req, res) {
         }
 
         const result = await myProfileService.GetUserMainQuestion(res.locals.uid);
-
+        console.log(result);
         return res.json(response(status.SUCCESS,result.data));
     }catch(err){
         if(err.message == 'DATA_NOT_FOUND'){
@@ -53,15 +53,16 @@ export async function GetMainQuestion(req, res) {
         if (!checkUidInLocals(res)) {
             return res.status(409).json(response(status.EMPTY_RES_LOCALS_UID));
         }
+        console.log(req.params.caseNum);
+        // const {error,value} = getMainQuestionSchema.validate(req.params);
+        // if (error) {
+        //     const errorMessages = error.details.map(detail => detail.message);
+        //     return res.status(400).json(response(status.MYPROFILE_EMPTY_DATA, errorMessages));
+        // }
+        // const getMainQuestionDTO = new GetMainQuestionDTO(value);
 
-        const {error,value} = getMainQuestionSchema.validate(req.params);
-        if (error) {
-            const errorMessages = error.details.map(detail => detail.message);
-            return res.status(400).json(response(status.MYPROFILE_EMPTY_DATA, errorMessages));
-        }
-        const getMainQuestionDTO = new GetMainQuestionDTO(value);
-
-        const result = await myProfileService.GetMainQuestion(getMainQuestionDTO);
+        
+        const result = await myProfileService.GetMainQuestion(req.params.caseNum);
         return res.json(response(status.SUCCESS,result.caseNum));
     }catch(err){
         if(err.message == 'DATA_NOT_FOUND'){

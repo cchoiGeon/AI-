@@ -26,9 +26,9 @@ export class MyProfileService {
         }
     }
     
-    async GetMainQuestion(getMainQuestionDTO) {
+    async GetMainQuestion(caseNum) {
         try {
-            const result = await this.myProfileRepository.GetMainQuestion(getMainQuestionDTO);
+            const result = await this.myProfileRepository.GetMainQuestion(caseNum);
             if(!result){
                 throw new Error('DATA_NOT_FOUND');
             }

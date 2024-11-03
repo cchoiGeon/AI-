@@ -96,7 +96,7 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
             const caseNum = result.result.data; // Store the case number
 
             // Make a GET request to retrieve profile data using the case number
-            const apiResponse2 = await fetch(`https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/profile/me/main-questione/${caseNum}`, {
+            const apiResponse2 = await fetch(`https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/profile/me/main-question/${caseNum}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -132,7 +132,7 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
             });
 
             // Make a POST request to save the profile data
-            await fetch('https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/profile/me/main-questione', {
+            await fetch('https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/profile/me/main-question', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
