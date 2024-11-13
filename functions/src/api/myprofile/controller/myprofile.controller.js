@@ -50,9 +50,9 @@ export async function SaveMainQuestion(req, res) {
 
 export async function GetMainQuestion(req, res) {
     try{
-        if (!checkUidInLocals(res)) {
-            return res.status(409).json(response(status.EMPTY_RES_LOCALS_UID));
-        }
+        // if (!checkUidInLocals(res)) {
+        //     return res.status(409).json(response(status.EMPTY_RES_LOCALS_UID));
+        // }
         console.log(req.params.caseNum);
         // const {error,value} = getMainQuestionSchema.validate(req.params);
         // if (error) {
