@@ -3,14 +3,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadingMessage = document.getElementById('loading-message');
 
     try {
-        const apiResponse = await fetch(`https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/users/cases`, {
-            method: 'GET',
-            credentials: 'include'
-        });
+        // const apiResponse = await fetch(`https://asia-northeast3-life-legacy-dev.cloudfunctions.net/api/users/cases`, {
+        //     method: 'GET',
+        //     credentials: 'include'
+        // });
 
-        const result = await apiResponse.json();
-        const caseNum = result.result.data;
-        const caseSections = getCaseSections(caseNum.userCase);
+        // const result = await apiResponse.json();
+        // const caseNum = result.result.data;
+
+        const caseSections = getCaseSections("case_1");
 
         // 로딩 메시지 제거
         loadingMessage.style.display = 'none';

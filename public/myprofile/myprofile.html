@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI를 이용한 자서전</title>
     <link rel="stylesheet" href="/myprofile/myprofile.css">
+    <script src="/myprofile/myprofile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="/myprofile/check.js"></script>
 </head>
 <body>
-    <div id="loading" class="loading">로딩 중...</div>
-    <div id="content" class="container" style="display: none;">
-        <div class="header">
-            <h1>자기소개</h1>
-        </div>
+    <header class="header">
+        <h1 id="title">AI를 이용한 자서전</h1>
+    </header>
+    <div id="content" class="container">
         <div class="response-section">
             <div class="response-messages">
+                <!-- 기존 메시지 내용 -->
                 <div class="message-bubble left-bubble gray-bubble">
                     <span id="question-title">
                         안녕하세요 저는 당신의 자서전 제작을 도와드릴 AI 작가입니다.<br />
@@ -24,32 +24,23 @@
                     </span>
                 </div>
                 <button id="replayBtn" class="replay-button">다시 들려줘</button>
-                <div class="example-bubble">
+                <br>
+                <div  class="message-bubble left-bubble gray-bubble">
                     <span id="example-text">예시:<br/>안녕 나는 서울에 살고있는 홍길동이라고해.<br />나는 남자고 55살이야. 나는 00고등학교를 졸업했고, 00일을 하고 있어.<br />결혼한 지 23년차야. 나는 5살 아들과 3살 딸이 있어.</span>
                 </div>
             </div>
+
+            <!-- 입력 섹션 -->
             <div class="input-section">
+                <img src="/images/plus.png" id="plusBtn" class="icon-button">
                 <div class="input-bar">
-                    <button id="plusBtn" class="icon-button">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            fill="currentColor"
-                            class="bi bi-plus-circle"
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                        </svg>
-                    </button>
-                    <textarea id="response-input" class="response-input" placeholder="여기에 답변을 입력하세요..."></textarea>
+                    <input id="response-input" class="response-input" placeholder="답변을 입력하세요.">
                     <button id="sendBtn" class="icon-button">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
-                            fill="currentColor"
+                            fill="#4a90e2"
                             class="bi bi-arrow-up-circle-fill"
                             viewBox="0 0 16 16"
                         >
@@ -59,13 +50,12 @@
                 </div>
                 <div id="action-buttons" class="action-buttons" style="display: none;">
                     <div class="voice-recognition-container">
-                        <h3>음성인식</h3>
+                        <button id="recordButton">
+                            <img src="/images/voice.png">
+                        </button>
                         <div class="message-box">
                             <div class="dots"></div>
                             <div class="timer">00:00</div>
-                        </div>
-                        <div class="button-container">
-                            <button id="recordButton"></button>
                         </div>
                     </div>
                 </div>
