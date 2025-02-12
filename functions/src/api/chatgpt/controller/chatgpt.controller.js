@@ -11,21 +11,18 @@ const chatGPTService = new ChatGPTAPI();
 
 export async function MakeCase(req, res) {
     try {
-        if (!checkUidInLocals(res)) {
-            return res.status(409).json(response(status.EMPTY_RES_LOCALS_UID));
-        }
-
+        console.log(req.body);
         const {error, value} = makeCaseSchema.validate(req.body);
         if (error) {
             const errorMessages = error.details.map(detail => detail.message);
             return res.status(400).json(response(status.CHATGPT_EMPTY_DATA, errorMessages));
         }
-
+        console.log("value : ",value);
         const CHATGPTTOKEN=100;
         const prompt = createCasePrompt(value.data);
 
         const result = await chatGPTService.GetChatGPTData(prompt,CHATGPTTOKEN);
-
+        console.log(response(status.SUCCESS, result));
         return res.json(response(status.SUCCESS, result));
     } catch (err) {
         if (err.message === 'CHATGPT_AUTH_ERR') {

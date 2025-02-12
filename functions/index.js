@@ -16,7 +16,7 @@ import { authRouter } from './src/route/auth.route.js';
 const app = express();
 
 app.use(cors({ 
-    origin: ['https://lifelegacy.co.kr','https://www.lifelegacy.co.kr','http://127.0.0.1:5002','http://192.168.219.103:5500'], 
+    origin: '*', 
     credentials: true 
 }));
 
@@ -27,8 +27,8 @@ app.use(express.urlencoded({ extended: true })); // URL-encoded 요청을 처리
 
 app.use("/users",LoginCheckMiddleWares,userRouter);
 app.use("/auth",authRouter);
-app.use("/profile/me",LoginCheckMiddleWares,myprofileRouter);
-app.use("/posts",LoginCheckMiddleWares, postsRouter);
-app.use("/chatGpt",LoginCheckMiddleWares, chatGptRouter);
+app.use("/profile/me",myprofileRouter);
+app.use("/posts",postsRouter);
+app.use("/chatGpt",chatGptRouter);
 
 export const api = functions.region("asia-northeast3").https.onRequest(app);
